@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Bond Movies API Documentation
+This is a simple API for managing information about Bond movies. The API provides the following endpoints:
 
-## Getting Started
+GET /movies: Retrieves a list of all Bond movies.
+GET /movies/:id: Retrieves a specific Bond movie based on its ID.
+POST /movies: Adds a new Bond movie.
+PUT /movies/:id: Updates an existing Bond movie based on its ID.
+DELETE /movies/:id: Deletes a Bond movie based on its ID.
+Authentication with API Key
+The API is secured with an API key that must be included in requests for authentication. To use the API, you need to include a valid API key in your requests. Otherwise, you will receive an error message stating "API key is missing" or "Invalid API key". To generate a new API key, you can send a POST request to /api-keys.
 
-First, run the development server:
+Example Requests
+Here are some examples of how to use the API with different requests:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Get all Bond movies:
+GET /movies?apiKey=YOUR_API_KEY
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Get a specific Bond movie:
+GET /movies/:id?apiKey=YOUR_API_KEY
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Add a new Bond movie:
+POST /movies?apiKey=YOUR_API_KEY
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Request Body:
+{
+"title": "Title",
+"year": 2023
+}
 
-## Learn More
+Update an existing Bond movie:
+PUT /movies/:id?apiKey=YOUR_API_KEY
 
-To learn more about Next.js, take a look at the following resources:
+Request Body:
+{
+"title": "New Title",
+"year": 2023
+}
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Delete a Bond movie:
+DELETE /movies/:id?apiKey=YOUR_API_KEY
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Error Handling
+The API handles erroneous requests with appropriate status codes and error messages. If a request is missing an API key, you will receive the error message "API key is missing". If an invalid API key is provided, you will receive the error message "Invalid API key". If a requested Bond movie is not found, you will receive the error message "Movie not found". Make sure to check the status code and any error messages in the response to handle erroneous requests correctly.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is a summary of the API documentation for Bond movies. Make sure to include all relevant details and customize the documentation according to your specific needs and implementation.
